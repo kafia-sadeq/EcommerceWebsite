@@ -18,7 +18,25 @@
         border-radius:10px;
         margin:20px
     }
-    
+    .table-deg{
+      text-align: center;
+      margin: auto;
+      border: 2px solid yellowgreen;
+      margin-top: 50px;
+    }
+    th{
+      font-weight: bold;
+      background-color: skyblue;
+      padding: 15px;
+      font-size: 20px;
+      color: white;
+    }
+    td{
+      color: wheat;
+      border: 1px solid yellowgreen;
+      padding: 10px
+
+    }
    </style>
   </head>
   <body>
@@ -35,6 +53,14 @@
               <div class="dev-design">
                 <input type="text" name="category">
                 <input type="submit"value="Add Category" class="btn btn-primary">
+              </div>
+              <div>
+                <table class="table-deg">
+                  <tr><th>Category Name</th></tr>
+                  @foreach ($data as $categoryName)
+                    <tr><td>{{ $categoryName->category_name}}</td></tr>
+                  @endforeach
+                </table>
               </div>
             </form>
       </div>
