@@ -20,4 +20,10 @@ class AdminController extends Controller
        toastr()->CloseButton()->timeout(5000)->success('Category Added Successfully.');
        return redirect()->back();
     }
+    public function delete_category($id){
+       $data=Category::find($id);
+       $data->delete();
+       toastr()->timeout(10000)->CloseButton()->success('Category Delete Successfully.');
+       return redirect()->back();
+    }
 }
