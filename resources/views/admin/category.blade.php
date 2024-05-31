@@ -53,22 +53,28 @@
               <div class="dev-design">
                 <input type="text" name="category">
                 <input type="submit"value="Add Category" class="btn btn-primary">
+              </form>
               </div>
               <div>
                 <table class="table-deg">
                   <tr>
                     <th>Category Name</th>
+                    <th>Edite Category</th>
                     <th>Delete Category</th>
                   </tr>
-                  @foreach ($data as $categoryName)
+                  @foreach ($data as $data)
                     <tr>
-                      <td>{{ $categoryName->category_name}}</td>
-                      <td><a onclick="confirmation(event)" href="{{url('delete_category',$categoryName->id)}}" class="btn btn-danger">Delete</a></td>
+                      <td>{{ $data->category_name}}</td>
+                      <td><a href="{{url('edite_category',$data->id)}}" 
+                        class="btn btn-success">Edite</a></td>
+
+                      <td><a onclick="confirmation(event)" href="{{url('delete_category',$data->id)}}" 
+                        class="btn btn-danger">Delete</a></td>
                     </tr>
                   @endforeach
                 </table>
               </div>
-            </form>
+           
       </div>
     </div>
     <!-- JavaScript files-->

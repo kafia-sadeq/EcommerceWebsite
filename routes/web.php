@@ -24,5 +24,6 @@ Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['au
 Route::get('view_category', [AdminController::class, 'view_category'])->middleware(['auth','admin']);
 Route::post('Add_category', [AdminController::class, 'Add_category'])->middleware(['auth','admin']);
 Route::get('delete_category/{id}', [AdminController::class, 'delete_category'])->middleware(['auth','admin']);
-
+Route::get('edite_category/{id}', [AdminController::class, 'edite_category'])->middleware(['auth','admin']);
+Route::post('update_category/{id}', [AdminController::class, 'update_category'])->middleware(['auth','admin']);
 
