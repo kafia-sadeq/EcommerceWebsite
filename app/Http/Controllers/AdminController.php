@@ -51,25 +51,15 @@ class AdminController extends Controller
         $data->category =$request->category;
         $data->price =$request->price;
         $data->quantity =$request->qty;
-        // $image=$request->image;
-       /*  if($image)
-        {
-           $imagename=time().$image.'.'.$image->getClientOriginalExtension();
-           $request->image->move('products',$imagename);
-           $data->image=$imagename;
-
-        } */
         $path = $request->file('image')->store('public/images');
         $data->image = $path;
-
-
         $data->save();
         toastr()->timeout(10000)->CloseButton()->success('Product Added Successfully.');
         return redirect()->back();
     }
 
     public function view_product(){
-        $product=Product::paginate(2);
+        $product=Product::paginate(3);
         return view('admin.view_product',compact('product'));
     }
     public function delete_product($id){
@@ -84,5 +74,29 @@ class AdminController extends Controller
        toastr()->timeout(10000)->CloseButton()->success('Category Delete Successfully.');
        return redirect()->back();
 
+    }
+    public function edite_product($id){
+     $products=Product::find($id);
+     $category=Category::all();
+     return view('admin.edite_product',compact('products','category'));
+    }
+
+    public function update_product(Request $request , $id){
+        $product=Product::find($id);
+         $product->title =$request->title;
+         $product->description =$request->description;
+         $product->category =$request->category;
+         $product->price =$request->price;
+         $product->quantity =$request->qty;
+         $path = $request->file('image')->store('public/images');
+         $product->image = $path;
+         $product->save();
+         toastr()->timeout(10000)->CloseButton()->success('Category Update Successfully.');
+         return redirect('/view_product');
+    }
+    public function product_search(Request $request){
+        $search = $request->input('search');
+        $product = Product::where('title', 'like', "%{$search}%")->paginate(3);
+        return view('admin.view_product',compact('product'));
     }
 }

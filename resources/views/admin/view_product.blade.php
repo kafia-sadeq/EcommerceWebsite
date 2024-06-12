@@ -38,6 +38,11 @@
       width:80px;
       height: 100px;
     }
+    input[type='search']{
+      width:500px;
+      height:60px;
+      margin-left:20px
+    }
    </style>
   </head>
   <body>
@@ -49,6 +54,11 @@
       <div class="page-content">
         <div class="page-header">
         <div class="container-fluid">
+          <form action="{{url('product_search')}}" method="get" >
+            @csrf
+            <input type="search"  name="search">
+            <input type="submit" value="Search" class="btn btn-secondary">
+          </form>
             <div class="dev_deg">
             <table class="table-deg">
                 <tr>
@@ -58,6 +68,7 @@
                   <th>category</th>
                   <th>Quentity</th>
                   <th>Image</th>
+                  <th>Update</th>
                   <th>Delete</th>
                 </tr>
                 @foreach ($product as $data)
@@ -69,6 +80,9 @@
                     <td>{{ $data->quantity}}</td>
                     <td>
                      <img src="{{ Storage::url($data->image) }}" alt="Image Description">
+                    </td>
+                    <td>
+                      <a  href="{{url('edite_product',$data->id)}}" class="btn btn-success">Update</a>
                     </td>
                     <td>
                       <a  onclick="confirmation(event)" href="{{url('delete_product',$data->id)}}" class="btn btn-danger">Delete</a>
