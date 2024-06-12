@@ -23,7 +23,5 @@
   <!-- end contact section -->
   <!-- info section -->
 @include('home.flooter')
-
 </body>
-
 </html>
