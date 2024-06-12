@@ -29,6 +29,8 @@ Route::post('update_category/{id}', [AdminController::class, 'update_category'])
 Route::get('add_product', [AdminController::class, 'add_product'])->middleware(['auth','admin']);
 Route::post('upload_product', [AdminController::class, 'upload_product'])->middleware(['auth','admin']);
 Route::get('view_product', [AdminController::class, 'view_product'])->middleware(['auth','admin']);
+Route::get('delete_product/{id}', [AdminController::class, 'delete_product'])->middleware(['auth','admin']);
+
 
 
 

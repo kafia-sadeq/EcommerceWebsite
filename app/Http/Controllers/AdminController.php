@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+
 
 class AdminController extends Controller
 {
@@ -68,7 +69,20 @@ class AdminController extends Controller
     }
 
     public function view_product(){
-        $product=Product::paginate(5);
+        $product=Product::paginate(2);
         return view('admin.view_product',compact('product'));
+    }
+    public function delete_product($id){
+      $product=Product::find($id);
+      //Image Path
+      $imagePath = $product->image;
+      //Verify the existence of the image
+      if (Storage::exists($imagePath)) {
+        Storage::delete($imagePath);
+       }
+      $product->delete();
+       toastr()->timeout(10000)->CloseButton()->success('Category Delete Successfully.');
+       return redirect()->back();
+
     }
 }
