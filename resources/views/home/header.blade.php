@@ -38,6 +38,7 @@
             @auth  
             <a href="">
               <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              [{{$count}}]
             </a>
             <form method="POST" action="{{ route('logout') }}" style="padding: 10px">
               @csrf
