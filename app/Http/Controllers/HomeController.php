@@ -50,8 +50,19 @@ class HomeController extends Controller
       toastr()->timeout(10000)->CloseButton()->success('Product Added To Cart  Successfully.');
       return redirect()->back();
 
-
-
-
+   }
+   public function mycart()
+   {   
+      if (Auth::id()) {
+      $user=Auth::user();
+      $userid=$user->id;
+      $count=Cart::where('user_id', $userid)->count();
+      $cart=Cart::where('user_id', $userid)->get();
+    } 
+    else 
+    {
+       $count='';
+    }
+      return view('home.mycart',compact('count','cart'));
    }
 }
