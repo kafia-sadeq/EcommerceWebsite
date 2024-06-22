@@ -65,4 +65,10 @@ class HomeController extends Controller
     }
       return view('home.mycart',compact('count','cart'));
    }
+   public function delete_product_cart($id){
+      $product=Cart::find($id);
+      $product->delete();
+       toastr()->timeout(10000)->CloseButton()->success('Category Delete Successfully.');
+       return redirect()->back();
+   }
 }
