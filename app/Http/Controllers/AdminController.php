@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
 
 
 class AdminController extends Controller
@@ -98,5 +99,9 @@ class AdminController extends Controller
         $search = $request->input('search');
         $product = Product::where('title', 'like', "%{$search}%")->paginate(3);
         return view('admin.view_product',compact('product'));
+    }
+    public function view_order(){
+        $order=Order::paginate(5);
+        return view('admin.order',compact('order'));
     }
 }

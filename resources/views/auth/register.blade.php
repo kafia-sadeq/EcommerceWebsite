@@ -17,13 +17,13 @@
         <!-- Phone -->
         <div>
             <x-input-label for="name" :value="__('phone')" />
-            <x-text-input id="phone" class="block mt-1 mb-2 w-full" type="text" name="name" :value="old('phone')" required autofocus autocomplete="phone" />
+            <x-text-input id="phone" class="block mt-1 mb-2 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
         <!-- address -->
         <div>
             <x-input-label for="address" :value="__('address')" />
-            <x-text-input id="address" class="block mt-1 w-full" type="text" name="name" :value="old('address')" required autofocus autocomplete="address" />
+            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus autocomplete="address" />
             <x-input-error :messages="$errors->get('address')" class="mt-2 mb-2" />
         </div>
         <!-- Password -->
