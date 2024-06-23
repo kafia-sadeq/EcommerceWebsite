@@ -104,4 +104,18 @@ class AdminController extends Controller
         $order=Order::paginate(5);
         return view('admin.order',compact('order'));
     }
+    public function on_the_way($id){
+      $order=Order::find($id);
+      $order->status='On the way';
+      $order->save();
+      return redirect('/view_product');
+
+    }
+    public function Delivered($id){
+      $order=Order::find($id);
+      $order->status='Delivered';
+      $order->save();
+      return redirect('/view_product');
+
+    }
 }
