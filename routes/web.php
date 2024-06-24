@@ -33,6 +33,7 @@ Route::get('product_search', [AdminController::class, 'product_search'])->middle
 Route::get('view_order', [AdminController::class, 'view_order'])->middleware(['auth','admin']);
 Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])->middleware(['auth','admin']);
 Route::get('Delivered/{id}', [AdminController::class,'Delivered'])->middleware(['auth','admin']);
+Route::get('print_pdf/{id}', [AdminController::class,'print_pdf'])->middleware(['auth','admin']);
 
 Route::get('product_details/{id}',[HomeController::class,'product_details']);
 Route::get('add_product_to_cart/{id}',[HomeController::class,'add_product_to_cart'])->middleware(['auth', 'verified']);

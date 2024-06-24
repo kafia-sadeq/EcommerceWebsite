@@ -7,11 +7,16 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\User;
 
 class HomeController extends Controller
 {
    public function index(){
-     return view('admin.index');
+     $user=User::where('usertype','user')->get()->count();
+     $order=Order::all()->count();
+     $product=Product::all()->count();
+     $delivered=Order::where('status','Delivered')->get()->count();
+     return view('admin.index',compact('user','order','product','delivered'));
     }
    public function home(){
     $products=Product::all();
@@ -97,4 +102,5 @@ class HomeController extends Controller
        return redirect()->back();
       return redirect()->back();
    }
+   
 }

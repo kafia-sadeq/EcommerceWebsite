@@ -40,6 +40,9 @@
               <i class="fa fa-shopping-bag" aria-hidden="true"></i>
               [{{$count}}]
             </a>
+            <a href="{{url('myOrder')}}">
+              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </a>
             <form method="POST" action="{{ route('logout') }}" style="padding: 10px">
               @csrf
               <input type="submit" value="Logout" class="btn btn-success">
